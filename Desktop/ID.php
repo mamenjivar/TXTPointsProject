@@ -22,18 +22,19 @@
         
         
 <?php
+global $con; //makes $con universally acceptible throughout code
 
-$con = mysql_connect("server name", "username", "password"); //connecting to server
-if (!$con) {
-    die("Can not connect:" . mysql_error());//if connection fails
+$con = mysql_connect("localhost", "root", ""); //connecting to server
+if (mysqli_connect_errno()) {
+    echo "Failed to Connect to MySQL: " . mysqli_error();//if connection fails
 }
 
-mysql_select_db("pointsproject", $con);//connects to database
+mysqli_select_db($con , "pointsproject");//connects to database
 
 if (isset($_POST['update'])){//if update button has been pressed
 	$var_num = $_POST['delete'];//takes the delete button data
     $UpdateQuery = "UPDATE coach_tbl SET coach_score = coach_score + $var_num WHERE coach_id = '$_POST[hidden]'";//adds the value to new points
-    mysql_query($UpdateQuery, $con);
+    mysqli_query($UpdateQuery, $con);
     /*$UpdateQuery = "UPDATE coach_tbl SET coach_name='$_POST[coachname]', coach_score='$_POST[coachscore]' WHERE coach_name ='$_POST[hidden]'";*/
     /*mysql_query($UpdateQuery, $con);*/
 };
@@ -41,7 +42,7 @@ if (isset($_POST['update'])){//if update button has been pressed
 
 if (isset($_POST['submit'])){//if submit button has been pressed
     $AddQuery = "INSERT INTO coach_tbl (coach_name, coach_score) VALUES('$_POST[name]', '$_POST[score]')"; //adds new names to table
-    mysql_query($AddQuery, $con);   
+    mysql_query($con, $AddQuery);   
     
 };
 
@@ -53,7 +54,7 @@ echo "<table border=1>
 <th>Score</th>
 </tr>";
 //creates a table to display data
-$myData = mysql_query($sql, $con);
+$myData = mysql_query($con, $sql;
 while($record = mysql_fetch_array($myData)) { //loops until all data is displayed onto table
     echo "<form action=ID.php method=post>";
     echo "<tr>";
@@ -71,7 +72,7 @@ echo "</table>";
 
 
 
-mysql_close($con); //closes server
+mysqli_close($con); //closes server
 
 ?>
         
