@@ -42,7 +42,7 @@ if (isset($_POST['update'])){//if update button has been pressed
 
 if (isset($_POST['submit'])){//if submit button has been pressed
     $AddQuery = "INSERT INTO coach_tbl (coach_name, coach_score) VALUES('$_POST[name]', '$_POST[score]')"; //adds new names to table
-    mysql_query($con, $AddQuery);   
+    mysqli_query($con, $AddQuery);   
     
 };
 
@@ -54,8 +54,8 @@ echo "<table border=1>
 <th>Score</th>
 </tr>";
 //creates a table to display data
-$myData = mysql_query($con, $sql;
-while($record = mysql_fetch_array($myData)) { //loops until all data is displayed onto table
+$myData = mysqli_query($con, $sql); //declares mydata variable
+while($record = mysqli_fetch_array($myData)) { //loops until all data is displayed onto table
     echo "<form action=ID.php method=post>";
     echo "<tr>";
     echo "<td><input type=text name=coachid value='" . $record['coach_id'] . "'> </td>";
