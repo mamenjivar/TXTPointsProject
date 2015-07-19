@@ -1,13 +1,13 @@
 <html>
 	<head>
 		<title>TXT Coach Leaderboard</title>
-		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="main.css">
 	</head>
 	<body>
 		<header id="top">Leaderboard</header>
 <!-- create a form to add new names to table (database) -->
 		<div id="form">
-			<form method="post" action="ID.php">
+			<form method="post" action="pointsproject_mysqli.php">
 				<input type="text" name="name" id="name" value="">
 				<input type="number" name="score" id="score" value="" min="1" max="10">
 
@@ -24,7 +24,7 @@
 <?php
 global $con; //makes $con universally acceptible throughout code
 
-$con = mysqli_connect("localhost", "root", ""); //connecting to server
+$con = mysqli_connect("localhost", "root", "root"); //connecting to server
 if (mysqli_connect_errno()) {
     echo "Failed to Connect to MySQL: " . mysqli_error();//if connection fails
 }
@@ -56,7 +56,7 @@ echo "<table border=1>
 //creates a table to display data
 $myData = mysqli_query($con, $sql); //declares mydata variable
 while($record = mysqli_fetch_array($myData)) { //loops until all data is displayed onto table
-    echo "<form action=ID.php method=post>";
+    echo "<form action=pointsproject_mysqli.php method=post>";
     echo "<tr>";
     echo "<td><input type=text name=coachid value='" . $record['coach_id'] . "'> </td>";
     echo "<td><input type=text name=coachname value='" . $record['coach_name'] . "'> </td>";
