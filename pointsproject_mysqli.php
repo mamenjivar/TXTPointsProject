@@ -24,7 +24,7 @@
 <?php
 global $con; //makes $con universally acceptible throughout code
 
-$con = mysql_connect("localhost", "root", ""); //connecting to server
+$con = mysqli_connect("localhost", "root", ""); //connecting to server
 if (mysqli_connect_errno()) {
     echo "Failed to Connect to MySQL: " . mysqli_error();//if connection fails
 }
