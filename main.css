@@ -1,0 +1,21 @@
+body {
+	background-color: gray;
+}
+
+#top {
+	background-color: #7BBF6A;
+}
+
+table, td, th {
+	border: 1px solid green;
+}
+
+th {
+	background-color: green;
+	color: white;
+}
+
+td {
+	background-color: red;
+	color: white;
+}
