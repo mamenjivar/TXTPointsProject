@@ -1,13 +1,13 @@
 <html>
 	<head>
 		<title>TXT Coach Leaderboard</title>
-		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="main.css">
 	</head>
 	<body>
 		<header id="top">Leaderboard</header>
 <!--form that adds new users to the page-->
 		<div id="form">
-			<form method="post" action="ID.php">
+			<form method="post" action="pointsproject_mysql.php">
 				<input type="text" name="name" id="name" value="">
 				<input type="number" name="score" id="score" value="" min="1" max="10">
 
@@ -23,7 +23,7 @@
 <!--using php to call server-->        
 <?php
 
-$con = mysql_connect("localhost", "root", ""); //connecting to server
+$con = mysql_connect("localhost", "root", "root"); //connecting to server
 if (!$con) {
     die("Can not connect:" . mysql_error()); //error message if can't connect to server
 }
@@ -55,7 +55,7 @@ echo "<table border=1>
 
 $myData = mysql_query($sql, $con);
 while($record = mysql_fetch_array($myData)) { //loops until all data is presented onto table
-    echo "<form action=ID.php method=post>";
+    echo "<form action=pointsproject_mysql.php method=post>";
     echo "<tr>";
     echo "<td><input type=text name=coachid value='" . $record['coach_id'] . "'> </td>";
     echo "<td><input type=text name=coachname value='" . $record['coach_name'] . "'> </td>";
