@@ -1,3 +1,4 @@
+<?php include("password_protect.php"); ?>
 <html>
 	<head>
 		<title>TXT Coach Leaderboard</title>
